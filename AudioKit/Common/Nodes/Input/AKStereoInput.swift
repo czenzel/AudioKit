@@ -12,7 +12,7 @@ open class AKStereoInput: AKNode, AKToggleable {
     internal let mixer = AVAudioMixerNode()
 
     /// Output Volume (Default 1)
-    open dynamic var volume: Double = 1.0 {
+    @objc open dynamic var volume: Double = 1.0 {
         didSet {
             if volume < 0 {
                 volume = 0
@@ -24,7 +24,7 @@ open class AKStereoInput: AKNode, AKToggleable {
     fileprivate var lastKnownVolume: Double = 1.0
 
     /// Determine if the microphone is currently on.
-    open dynamic var isStarted: Bool {
+    @objc open dynamic var isStarted: Bool {
         return volume != 0.0
     }
 
@@ -35,9 +35,8 @@ open class AKStereoInput: AKNode, AKToggleable {
             self.avAudioNode = mixer
             AKSettings.audioInputEnabled = true
             AudioKit.engine.attach(mixer)
-            if let inputNode = AudioKit.engine.inputNode {
-                AudioKit.engine.connect(inputNode, to: self.avAudioNode, format: nil)
-            }
+            let inputNode = AudioKit.engine.inputNode
+            AudioKit.engine.connect(inputNode, to: self.avAudioNode, format: nil)
         #endif
     }
 

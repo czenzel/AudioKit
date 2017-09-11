@@ -22,7 +22,7 @@ open class AKBooster: AKNode, AKToggleable, AKComponent {
     fileprivate var rightGainParameter: AUParameter?
 
     /// Ramp Time represents the speed at which parameters are allowed to change
-    open dynamic var rampTime: Double = AKSettings.rampTime {
+    @objc open dynamic var rampTime: Double = AKSettings.rampTime {
         willSet {
             internalAU?.rampTime = newValue
         }
@@ -32,7 +32,7 @@ open class AKBooster: AKNode, AKToggleable, AKComponent {
     fileprivate var lastKnownRightGain: Double = 1.0
 
     /// Amplification Factor
-    open dynamic var gain: Double = 1 {
+    @objc open dynamic var gain: Double = 1 {
         willSet {
             if gain != newValue {
                 if internalAU?.isSetUp() ?? false {
@@ -49,7 +49,7 @@ open class AKBooster: AKNode, AKToggleable, AKComponent {
     }
 
     /// Left Channel Amplification Factor
-    open dynamic var leftGain: Double = 1 {
+    @objc open dynamic var leftGain: Double = 1 {
         willSet {
             if leftGain != newValue {
                 if internalAU?.isSetUp() ?? false {
@@ -64,7 +64,7 @@ open class AKBooster: AKNode, AKToggleable, AKComponent {
     }
 
     /// Right Channel Amplification Factor
-    open dynamic var rightGain: Double = 1 {
+    @objc open dynamic var rightGain: Double = 1 {
         willSet {
             if rightGain != newValue {
                 if internalAU?.isSetUp() ?? false {
@@ -79,7 +79,7 @@ open class AKBooster: AKNode, AKToggleable, AKComponent {
     }
 
     /// Amplification Factor in db
-    open dynamic var dB: Double {
+    @objc open dynamic var dB: Double {
         set {
             gain = pow(10.0, Double(newValue / 20))
         }
@@ -89,7 +89,7 @@ open class AKBooster: AKNode, AKToggleable, AKComponent {
     }
 
     /// Tells whether the node is processing (ie. started, playing, or active)
-    open dynamic var isStarted: Bool {
+    @objc open dynamic var isStarted: Bool {
         return internalAU?.isPlaying() ?? false
     }
 

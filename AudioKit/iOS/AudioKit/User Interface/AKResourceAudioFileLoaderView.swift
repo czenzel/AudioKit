@@ -148,9 +148,9 @@ open class AKResourcesAudioFileLoaderView: UIView {
         let nameLabelStyle = NSMutableParagraphStyle()
         nameLabelStyle.alignment = .left
 
-        let nameLabelFontAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 24),
-                                       NSForegroundColorAttributeName: UIColor.black,
-                                       NSParagraphStyleAttributeName: nameLabelStyle]
+        let nameLabelFontAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 24),
+                                       NSAttributedStringKey.foregroundColor: UIColor.black,
+                                       NSAttributedStringKey.paragraphStyle: nameLabelStyle]
 
         let nameLabelInset: CGRect = nameLabelRect.insetBy(dx: 10, dy: 0)
         let nameLabelTextHeight: CGFloat = NSString(string: fileName).boundingRect(

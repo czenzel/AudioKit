@@ -110,9 +110,9 @@ open class AKPresetLoaderView: UIView {
         let presetLabelTextContent = NSString(string: label)
         let presetLabelStyle = NSMutableParagraphStyle()
         presetLabelStyle.alignment = .left
-        let presetLabelFontAttributes = [NSFontAttributeName: finalFont,
-                                         NSForegroundColorAttributeName: UIColor.black,
-                                         NSParagraphStyleAttributeName: presetLabelStyle]
+        let presetLabelFontAttributes = [NSAttributedStringKey.font: finalFont,
+                                         NSAttributedStringKey.foregroundColor: UIColor.black,
+                                         NSAttributedStringKey.paragraphStyle: presetLabelStyle]
 
         let presetLabelInset: CGRect = presetLabelRect.insetBy(dx: 10 - 10, dy: 0)
         let presetLabelTextHeight: CGFloat = presetLabelTextContent.boundingRect(
@@ -190,9 +190,9 @@ open class AKPresetLoaderView: UIView {
                                    height: hitpointHeight)
         let nameLabelStyle = NSMutableParagraphStyle()
         nameLabelStyle.alignment = .left
-        let nameLabelFontAttributes = [NSFontAttributeName: finalFont,
-                                       NSForegroundColorAttributeName: UIColor.black,
-                                       NSParagraphStyleAttributeName: nameLabelStyle] as [String : Any]
+        let nameLabelFontAttributes = [NSAttributedStringKey.font.rawValue: finalFont,
+                                       NSAttributedStringKey.foregroundColor: UIColor.black,
+                                       NSAttributedStringKey.paragraphStyle: nameLabelStyle] as! [NSAttributedStringKey : Any]
         let nameLabelInset: CGRect = nameLabelRect.insetBy(dx: 10 - 10, dy: 0)
         let nameLabelTextHeight: CGFloat = NSString(string: presetName).boundingRect(
             with: CGSize(width: nameLabelInset.width,

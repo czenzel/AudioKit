@@ -29,7 +29,7 @@
     @IBInspectable open var format: String = "%0.3f"
 
     /// Background color
-    @IBInspectable open var bgColor: UIColor = UIColor(colorLiteralRed: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+    @IBInspectable open var bgColor: UIColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
 
     /// Slider overlay color
     @IBInspectable open var sliderColor: UIColor = .red
@@ -165,9 +165,9 @@
         let nameLabelStyle = NSMutableParagraphStyle()
         nameLabelStyle.alignment = .left
 
-        let nameLabelFontAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: fontSize),
-                                       NSForegroundColorAttributeName: textColor,
-                                       NSParagraphStyleAttributeName: nameLabelStyle] as [String : Any]
+        let nameLabelFontAttributes = [NSAttributedStringKey.font.rawValue: UIFont.boldSystemFont(ofSize: fontSize),
+                                       NSAttributedStringKey.foregroundColor: textColor,
+                                       NSAttributedStringKey.paragraphStyle: nameLabelStyle] as! [NSAttributedStringKey : Any]
 
         let nameLabelInset: CGRect = nameLabelRect.insetBy(dx: 10, dy: 0)
         let nameLabelTextHeight: CGFloat = NSString(string: propertyName).boundingRect(
@@ -190,9 +190,9 @@
         let valueLabelStyle = NSMutableParagraphStyle()
         valueLabelStyle.alignment = .right
 
-        let valueLabelFontAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: fontSize),
-                                        NSForegroundColorAttributeName: textColor,
-                                        NSParagraphStyleAttributeName: valueLabelStyle] as [String : Any]
+        let valueLabelFontAttributes = [NSAttributedStringKey.font.rawValue: UIFont.boldSystemFont(ofSize: fontSize),
+                                        NSAttributedStringKey.foregroundColor: textColor,
+                                        NSAttributedStringKey.paragraphStyle: valueLabelStyle] as! [NSAttributedStringKey : Any]
 
         let valueLabelInset: CGRect = valueLabelRect.insetBy(dx: 10, dy: 0)
         let valueLabelTextHeight: CGFloat = NSString(string: currentValueText).boundingRect(
